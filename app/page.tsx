@@ -14,6 +14,7 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ImageWizardLogo from "@/components/ImageWizardLogo";
 
 const BackgroundIcon = ({ icon: Icon, className, isDragging }) => {
   return (
@@ -33,74 +34,32 @@ const BackgroundIcon = ({ icon: Icon, className, isDragging }) => {
   );
 };
 
-const ImageWizardLogo = () => {
-  return (
-    <motion.div
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        duration: 1.5,
-      }}
-      className="absolute top-4 left-4 z-30 flex items-center"
-    >
-      <motion.svg
-        width="50"
-        height="50"
-        viewBox="0 0 50 50"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <motion.path
-          d="M25 2L2 25L25 48L48 25L25 2Z"
-          fill="#3B82F6"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
-        />
-        <motion.path
-          d="M25 10L10 25L25 40L40 25L25 10Z"
-          fill="white"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
-        />
-        <motion.path
-          d="M25 18L18 25L25 32L32 25L25 18Z"
-          fill="#3B82F6"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, delay: 1, ease: "easeInOut" }}
-        />
-      </motion.svg>
-      <motion.span
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        className="ml-2 text-lg font-bold text-blue-500"
-      >
-        ImageWizard
-      </motion.span>
-    </motion.div>
-  );
-};
-
 export default function LandingPage() {
   const [isDragging, setIsDragging] = useState(false);
   const router = useRouter();
 
+  // const onDrop = useCallback(
+  //   (acceptedFiles: File[]) => {
+  //     console.log("File uploaded:", acceptedFiles[0].name);
+  //     router.push("/edit");
+  //   },
+  //   [router]
+  // );
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
-      console.log("File uploaded:", acceptedFiles[0].name);
-      router.push("/edit");
+      const file = acceptedFiles[0];
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const imageDataUrl = event.target?.result as string;
+        localStorage.setItem("editImage", imageDataUrl);
+        router.push("/edit");
+      };
+
+      reader.readAsDataURL(file);
     },
     [router]
   );
-
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
     onDrop,
     accept: { "image/*": [] },
@@ -113,7 +72,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 overflow-hidden relative">
-      <ImageWizardLogo />
+      <ImageWizardLogo edit={false} />
       <BackgroundIcon
         icon={WandSparkles}
         className="top-20 left-20"
@@ -139,9 +98,9 @@ export default function LandingPage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-12 z-10"
+        className="text-center mb-12 z-10 md:pt-0 pt-20"
       >
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 md:mt-0 mt-4">
           Transform Your Images
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
