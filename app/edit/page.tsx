@@ -88,10 +88,10 @@ export default function Component() {
     }
   }, [image]);
 
-  const handleGoBack = () => {
-    localStorage.removeItem("editImage");
-    router.push("/");
-  };
+  // const handleGoBack = () => {
+  //   localStorage.removeItem("editImage");
+  //   router.push("/");
+  // };
 
   const applyEdit = (
     editFunction: (ctx: CanvasRenderingContext2D, img: HTMLImageElement) => void
@@ -117,13 +117,13 @@ export default function Component() {
             newWidth = containerHeight * imgAspectRatio;
           }
 
-          canvasRef.current.width = newWidth;
-          canvasRef.current.height = newHeight;
+          canvasRef.current!.width = newWidth;
+          canvasRef.current!.height = newHeight;
           ctx.drawImage(img, 0, 0, newWidth, newHeight);
           editFunction(ctx, img);
-          setEditedImage(canvasRef.current.toDataURL());
+          setEditedImage(canvasRef.current!.toDataURL());
         };
-        img.src = editedImage || image;
+        img.src = editedImage || image || "";
       }
     }
   };
@@ -707,7 +707,7 @@ export default function Component() {
   );
 }
 
-function TabButton({ icon, label, active, onClick }) {
+function TabButton({ icon, label, active, onClick }: any) {
   return (
     <button
       onClick={onClick}

@@ -1,12 +1,12 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 function ImageWizardLogo({ edit }: { edit: boolean }) {
   const router = useRouter();
   return (
     <motion.div
-      onClick={(e) => router.back()}
+      onClick={() => router.back()}
       initial={{ scale: 0, rotate: -180 }}
       animate={{ scale: 1, rotate: 0 }}
       transition={{

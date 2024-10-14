@@ -16,7 +16,15 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import ImageWizardLogo from "@/components/ImageWizardLogo";
 
-const BackgroundIcon = ({ icon: Icon, className, isDragging }) => {
+const BackgroundIcon = ({
+  icon: Icon,
+  className,
+  isDragging,
+}: {
+  icon: any;
+  className: string;
+  isDragging: boolean;
+}) => {
   return (
     <motion.div
       className={`fixed text-primary ${className}`}
@@ -60,7 +68,7 @@ export default function LandingPage() {
     },
     [router]
   );
-  const { getRootProps, getInputProps, isDragAccept } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: { "image/*": [] },
     multiple: false,
@@ -187,7 +195,15 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({ icon, title, description }) {
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: any;
+  title: string;
+  description: string;
+}) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
