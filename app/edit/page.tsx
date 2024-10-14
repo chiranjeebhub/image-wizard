@@ -139,6 +139,32 @@ export default function Component() {
     return <div>Loading...</div>;
   }
 
+  function TabButton({
+    icon,
+    label,
+    active,
+    onClick,
+  }: {
+    icon: React.ReactNode;
+    label: string;
+    active: boolean;
+    onClick: () => void;
+  }) {
+    return (
+      <button
+        onClick={onClick}
+        className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors ${
+          active
+            ? "bg-blue-100 text-blue-600"
+            : "text-gray-500 hover:bg-gray-100"
+        }`}
+      >
+        {icon}
+        <span className="text-xs">{label}</span>
+      </button>
+    );
+  }
+
   const renderTabContent = () => {
     switch (activeTab) {
       case "crop":
@@ -704,19 +730,5 @@ export default function Component() {
         </div>
       </div>
     </div>
-  );
-}
-
-function TabButton({ icon, label, active, onClick }: any) {
-  return (
-    <button
-      onClick={onClick}
-      className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors ${
-        active ? "bg-blue-100 text-blue-600" : "text-gray-500 hover:bg-gray-100"
-      }`}
-    >
-      {icon}
-      <span className="text-xs">{label}</span>
-    </button>
   );
 }
