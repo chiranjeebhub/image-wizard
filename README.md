@@ -2,6 +2,8 @@
 
 An interactive image editing component built with React, Lucide icons, and custom utilities. This tool allows users to crop, resize, rotate, flip, adjust settings, apply filters, and add text to images. Users can load an image from local storage, edit it, and save it in different formats with customizable quality.
 
+![alt text](image.png)
+
 ## ✨ Features
 
 - **✂️ Crop:** Crop images to fixed aspect ratios like 1:1, 4:3, and 16:9.

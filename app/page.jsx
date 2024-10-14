@@ -16,15 +16,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import ImageWizardLogo from "@/components/ImageWizardLogo";
 
-const BackgroundIcon = ({
-  icon: Icon,
-  className,
-  isDragging,
-}: {
-  icon: any;
-  className: string;
-  isDragging: boolean;
-}) => {
+const BackgroundIcon = ({ icon: Icon, className, isDragging }) => {
   return (
     <motion.div
       className={`fixed text-primary ${className}`}
@@ -54,12 +46,12 @@ export default function LandingPage() {
   //   [router]
   // );
   const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
+    (acceptedFiles) => {
       const file = acceptedFiles[0];
       const reader = new FileReader();
 
       reader.onload = (event) => {
-        const imageDataUrl = event.target?.result as string;
+        const imageDataUrl = event.target?.result;
         localStorage.setItem("editImage", imageDataUrl);
         router.push("/edit");
       };
@@ -195,15 +187,7 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: any;
-  title: string;
-  description: string;
-}) {
+function FeatureCard({ icon, title, description }) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
