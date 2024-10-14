@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📸 ImageWizard
 
-## Getting Started
+An interactive image editing component built with React, Lucide icons, and custom utilities. This tool allows users to crop, resize, rotate, flip, adjust settings, apply filters, and add text to images. Users can load an image from local storage, edit it, and save it in different formats with customizable quality.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **✂️ Crop:** Crop images to fixed aspect ratios like 1:1, 4:3, and 16:9.
+- **📏 Resize:** Resize images by width, height, or custom dimensions.
+- **🔄 Rotate:** Rotate images by 90° left or right or rotate to any angle.
+- **🔄 Flip:** Flip images horizontally or vertically.
+- **🌞 Adjust:** Adjust brightness, contrast, and saturation.
+- **🎨 Filters:** Apply filters like grayscale, sepia, invert, and more.
+- **📝 Text:** Add custom text with adjustable alignment and color.
+- **💾 Save Options:** Download edited images in JPG, PNG, or WebP formats with adjustable quality.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone this repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone https://github.com/your-username/ImageWizard.git
+   ```
 
-## Learn More
+2. Navigate to the project directory:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   cd ImageWizard
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Usage
 
-## Deploy on Vercel
+1. Run the app locally:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Open the app in your browser at http://localhost:3000.
+
+## 🎨 Customization
+
+You can customize the component's styles and icons by modifying the relevant Tailwind CSS classes and Lucide icons used in the component.
+
+## 🤝 Contributing
+
+1. Fork the repository.
+2. Create your feature branch: `git checkout -b feature/YourFeature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a pull request.
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+## 📬 Contact
+
+For further queries, feel free to reach out:
+
+- **X:** [@ichiranjeeb](https://x.com/ichiranjeeb)
+- **Email:** [work.chiranjeeb@gmail.com](mailto:work.chiranjeeb@gmail.com)
+
+Project: [https://github.com/chiranjeebhub/image-wizard](https://github.com/chiranjeebhub/image-wizard)
